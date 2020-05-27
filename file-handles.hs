@@ -1,6 +1,9 @@
-import System.IO
-import System.Directory
+import System.IO        ( IOMode(WriteMode, ReadMode)
+                        , openFile, hPutStrLn, hClose
+                        , hGetLine, hIsEOF )
+import System.Directory ( removeFile )
 
+main :: IO ()
 main =
   do
     h <- openFile "hello.txt" WriteMode
@@ -16,13 +19,13 @@ main =
     putStrLn line
 
     atEnd <- hIsEOF h
-    putStrLn (show atEnd)
+    putStrLn $ show atEnd
 
     line <- hGetLine h
     putStrLn line
 
     atEnd <- hIsEOF h
-    putStrLn (show atEnd)
+    putStrLn $ show atEnd
 
     hClose h
 
