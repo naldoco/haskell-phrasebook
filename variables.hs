@@ -1,14 +1,21 @@
-main =
-  do
-    let x = 2
-    putStrLn (show (x + x))
+main :: IO ()
+main = do
+  let
+    x :: Integer
+    x = 2
+  putStrLn
+    . show
+    $ x + x
 
-    let (b, c) = ("one", "two")
-    putStrLn b
-    putStrLn c
+  let
+    (b, c) = ("one", "two") :: (String, String)
+  putStrLn b
+  putStrLn c
 
-    let
-        d = True
-        e = [1,2,3]
-    putStrLn (show d)
-    putStrLn (show e)
+  let
+    d :: Bool
+    d = True
+    e :: [Integer]
+    e = [1,2,3]
+  putStrLn $ show d
+  putStrLn $ show e

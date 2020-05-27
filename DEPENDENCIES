@@ -1,0 +1,55 @@
+* hashing.hs
+hashable
+
+* branching.hs
+time
+
+* crypto-hashing.hs
+cryptonite
+bytestring
+memory
+utf8-string
+
+* moments-in-time.hs
+time
+
+* mutable-references.hs
+stm
+
+* threads.hs
+stm
+
+* transactions.hs
+stm
+mwc-random
+containers
+primitive
+
+* timeouts.hs
+stm
+
+* invert.hs
+containers
+generic-deriving
+
+* monitoring.hs
+network
+bytestring
+stm
+async
+signal
+process
+containers
+safe-exceptions
+
+* bounded-queues.hs
+mwc-random
+safe-exceptions
+stm
+async
+
+* file-handles.hs
+directory
+
+* records-with-optics.hs
+optics

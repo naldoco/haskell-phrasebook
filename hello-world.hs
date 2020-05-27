@@ -1,1 +1,2 @@
-main = putStrLn "hello world"
+main :: IO ()
+main = putStrLn "Hello world!"

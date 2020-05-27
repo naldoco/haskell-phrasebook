@@ -1,18 +1,27 @@
-import Data.Time
+import Data.Time ( ZonedTime, todHour, localTimeOfDay
+                 , zonedTimeToLocalTime, getZonedTime )
 
+timeNow :: ZonedTime -> IO ()
 timeNow now =
-  case todHour (localTimeOfDay (zonedTimeToLocalTime now)) < 12 of
+  case todHour ( localTimeOfDay
+                 $ zonedTimeToLocalTime now )
+       < 12 of
     True  -> putStrLn "It's before noon"
     False -> putStrLn "It's after noon"
 
-data ServicePlan = Free | Monthly | Annual
+data ServicePlan
+  = Free
+  | Monthly
+  | Annual
 
+billAmount :: (Num p) => ServicePlan -> p
 billAmount plan =
   case plan of
     Free    -> 0
     Monthly -> 5
     Annual  -> billAmount Monthly * 12
 
+writeNumber :: (Integral a) => a -> String
 writeNumber i =
   case i of
     1 -> "one"
@@ -20,14 +29,22 @@ writeNumber i =
     3 -> "three"
     _ -> "unknown number."
 
-main =
-  do
-    now <- getZonedTime
-    timeNow now
+main :: IO ()
+main = do
+  now <- getZonedTime
+  timeNow now
 
-    let plan = Free
-    putStrLn ("Customer owes " ++ show (billAmount plan)
-              ++ " dollars.")
+  let
+    plan :: ServicePlan
+    plan = Free
+  putStrLn $ "Customer owes "
+          ++ show ( billAmount plan )
+          ++ " dollars."
 
-    let i = 2
-    putStrLn ("Write " ++ show i ++ " as " ++ (writeNumber i))
+  let
+    i :: Integer
+    i = 2
+  putStrLn $ "Write "
+          ++ show        i
+          ++ " as "
+          ++ writeNumber i
